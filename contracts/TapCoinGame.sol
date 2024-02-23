@@ -102,6 +102,7 @@ contract TapCoinGame is Ownable {
     }
 
     // Function to remove user from activePlayers array after certain amount of time
+    // *** CURRENTLY REMOVED FROM DEV AND MAIN ***
     function removeActivePlayer(address[] memory users) public {
         for (uint256 i = 0; i < users.length; i++) {
             if (streakBoard[users[i]].isValidUser) {
@@ -142,6 +143,7 @@ contract TapCoinGame is Ownable {
     }
 
     // Function to check if the users have played their 100th game in a row
+    // *** CURRENTLY REMOVED FROM DEV AND MAIN ***
     function checkOneHundredGames(address winner, address loser) internal {
         if (streakBoard[winner].games == 100) {
             streakBoard[winner].has100Games = true;
