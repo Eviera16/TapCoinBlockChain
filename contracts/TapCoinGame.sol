@@ -50,6 +50,34 @@ contract TapCoinGame is Ownable {
         ethUsdPriceFeed = AggregatorV3Interface(_priceFeedAddress);
     }
 
+    // Function to get a specfic piece of transaction data
+    function getTransactionData(
+        address user,
+        uint256 dataIndex
+    ) public view returns (uint256) {
+        if (dataIndex == 0) {
+            return streakBoard[user].transaction_info.addWalletTransaction;
+        } else if (dataIndex == 1) {
+            return streakBoard[user].transaction_info.faceIdCheckTransaction;
+        } else if (dataIndex == 2) {
+            return streakBoard[user].transaction_info.gameTransactions;
+        } else if (dataIndex == 3) {
+            return streakBoard[user].transaction_info.totalTransactionAmount;
+        }
+        // else if (dataIndex == 4) {
+        //     return streakBoard[user].transaction_info.transaction_3;
+        // }
+        // else if (dataIndex == 5) {
+        //     return streakBoard[user].totalTransactions.transaction_4;
+        // } else if (dataIndex == 6) {
+        //     return streakBoard[user].totalTransactions.transaction_5;
+        // }
+        // else if (dataIndex == 7) {
+        //     return streakBoard[user].transaction_info.totalTransactionAmount;
+        // }
+        return 0;
+    }
+
     function getUserStreakBoard(
         address user
     ) public view returns (TapCoinGame.streakBoardValues memory) {
@@ -109,9 +137,10 @@ contract TapCoinGame is Ownable {
 
     // Function to set each of the transaction prices for a user
     // And the totalTransaction price
+    // change from public to internal later
     function setTransactionPriceForUser(
         address user_address
-    ) internal view returns (uint256) {
+    ) public view returns (uint256) {
         TapCoinGame.streakBoardValues memory user = streakBoard[user_address];
         uint256 totalAmount = user.transaction_info.addWalletTransaction +
             user.transaction_info.faceIdCheckTransaction +

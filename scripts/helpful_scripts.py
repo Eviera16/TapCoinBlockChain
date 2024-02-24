@@ -6,7 +6,7 @@ STARTING_PRICE = 200000000000
 FORKED_LOCAL_ENVIORNMENTS = ["mainnet-fok", "mainnet-fork-dev"]
 LOCAL_BLOCKCHAIN_ENVIORNMENTS = ["development", "ganache_local"]
 
-def get_account(index=0, id=None):
+def get_account(index=0, id=None, user2=False):
     if index:
         print("ACCOUNTS BELOW *******************")
         print(accounts)
@@ -16,8 +16,10 @@ def get_account(index=0, id=None):
     if (network.show_active() in LOCAL_BLOCKCHAIN_ENVIORNMENTS 
     or network.show_active() in FORKED_LOCAL_ENVIORNMENTS):
         return accounts[0]
-    
-    return accounts.add(config["wallets"]["from_key"])
+    if user2:
+        return accounts.add(config["wallets"]["from_key2"])
+    else:
+        return accounts.add(config["wallets"]["from_key"])
 
 # GET THE FUNDS
 def calculate_gas_price(gasPrice, gasLimit):
