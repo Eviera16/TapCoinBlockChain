@@ -64,17 +64,6 @@ contract TapCoinGame is Ownable {
         } else if (dataIndex == 3) {
             return streakBoard[user].transaction_info.totalTransactionAmount;
         }
-        // else if (dataIndex == 4) {
-        //     return streakBoard[user].transaction_info.transaction_3;
-        // }
-        // else if (dataIndex == 5) {
-        //     return streakBoard[user].totalTransactions.transaction_4;
-        // } else if (dataIndex == 6) {
-        //     return streakBoard[user].totalTransactions.transaction_5;
-        // }
-        // else if (dataIndex == 7) {
-        //     return streakBoard[user].transaction_info.totalTransactionAmount;
-        // }
         return 0;
     }
 
