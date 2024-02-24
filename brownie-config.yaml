@@ -35,3 +35,4 @@ networks:
     network_id: "*"
 wallets:
   from_key: ${PRIVATE_KEY}
+  from_key2: ${PRIVATE_KEY2}
